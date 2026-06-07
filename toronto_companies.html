@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toronto Tech Companies</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0c10;
+    --surface: #111318;
+    --border: #1e2230;
+    --accent: #00e5a0;
+    --accent2: #4f8cff;
+    --accent3: #ff6b6b;
+    --text: #e8eaf0;
+    --muted: #6b7280;
+    --gold: #f5c842;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  .noise {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.4;
+  }
+
+  .container {
+    position: relative; z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 24px 60px;
+  }
+
+  header {
+    margin-bottom: 48px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 32px;
+  }
+
+  .header-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+
+  h1 span { color: var(--accent); }
+
+  .subtitle {
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: 13px;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  /* SECTION HEADERS */
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 6px 14px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+
+  .section-title.green { background: rgba(0,229,160,0.12); color: var(--accent); border: 1px solid rgba(0,229,160,0.25); }
+  .section-title.blue  { background: rgba(79,140,255,0.12); color: var(--accent2); border: 1px solid rgba(79,140,255,0.25); }
+  .section-title.red   { background: rgba(255,107,107,0.12); color: var(--accent3); border: 1px solid rgba(255,107,107,0.25); }
+  .section-title.gold  { background: rgba(245,200,66,0.1); color: var(--gold); border: 1px solid rgba(245,200,66,0.25); }
+
+  .tier-block { margin-bottom: 40px; }
+
+  .tier-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .tier-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  /* CARDS GRID */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 10px;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .card:hover { border-color: #2e3448; transform: translateY(-1px); }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+  }
+  .card.ai::before    { background: linear-gradient(90deg, var(--accent), transparent); }
+  .card.fin::before   { background: linear-gradient(90deg, var(--accent2), transparent); }
+  .card.health::before { background: linear-gradient(90deg, #b97fff, transparent); }
+  .card.tech::before  { background: linear-gradient(90deg, var(--gold), transparent); }
+  .card.other::before { background: linear-gradient(90deg, var(--muted), transparent); }
+
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .company-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.2;
+  }
+
+  .score-badge {
+    flex-shrink: 0;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  .score-s  { background: rgba(0,229,160,0.15); color: var(--accent); border: 1px solid rgba(0,229,160,0.3); }
+  .score-a  { background: rgba(79,140,255,0.15); color: var(--accent2); border: 1px solid rgba(79,140,255,0.3); }
+  .score-b  { background: rgba(245,200,66,0.15); color: var(--gold); border: 1px solid rgba(245,200,66,0.3); }
+  .score-c  { background: rgba(255,107,107,0.12); color: var(--accent3); border: 1px solid rgba(255,107,107,0.25); }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-bottom: 6px;
+  }
+
+  .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    padding: 1px 6px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .tag-ai     { background: rgba(0,229,160,0.08); color: #5efcc4; }
+  .tag-fin    { background: rgba(79,140,255,0.08); color: #8bb4ff; }
+  .tag-health { background: rgba(185,127,255,0.1); color: #c9a0ff; }
+  .tag-hw     { background: rgba(245,200,66,0.08); color: #f8d96b; }
+  .tag-saas   { background: rgba(120,120,180,0.1); color: #a0a0d0; }
+  .tag-cloud  { background: rgba(60,200,255,0.08); color: #60d8ff; }
+  .tag-prop   { background: rgba(200,120,60,0.1); color: #e09060; }
+  .tag-bio    { background: rgba(100,220,100,0.08); color: #80e880; }
+
+  .card-desc {
+    color: var(--muted);
+    font-size: 11.5px;
+    line-height: 1.5;
+  }
+
+  /* SCORE BAR */
+  .score-bar-wrap {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .score-bar {
+    flex: 1;
+    height: 3px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .score-fill { height: 100%; border-radius: 2px; transition: width 0.5s; }
+  .fill-s { background: var(--accent); }
+  .fill-a { background: var(--accent2); }
+  .fill-b { background: var(--gold); }
+  .fill-c { background: var(--accent3); }
+
+  .score-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    width: 24px;
+    text-align: right;
+  }
+
+  /* DIVIDER */
+  .big-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 48px 0;
+    position: relative;
+  }
+  .big-divider::before {
+    content: attr(data-label);
+    position: absolute;
+    top: -9px;
+    left: 0;
+    background: var(--bg);
+    padding-right: 12px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* LEGEND */
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 32px;
+    padding: 14px 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--muted);
+  }
+  .legend-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+  }
+
+  @media (max-width: 600px) {
+    .cards { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="noise"></div>
+<div class="container">
+
+  <header>
+    <div class="header-label">Toronto Tech Ecosystem · 多伦多科技生态</div>
+    <h1>76家公司<span>全景图谱</span></h1>
+    <div class="subtitle">// AI · FinTech · HealthTech · SaaS · 其他 — 按成熟度 + 潜力评分</div>
+  </header>
+
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:var(--accent)"></div>S 级 9–10 · 顶级潜力</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--accent2)"></div>A 级 7–8 · 高潜力</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--gold)"></div>B 级 5–6 · 稳健成长</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--accent3)"></div>C 级 3–4 · 细分市场</div>
+  </div>
+
+  <!-- ======== LIST 1: AI / TECH / FINTECH / HEALTHTECH ======== -->
+  <div class="section-title green">▸ List 1 — AI · 科技 · 金融科技 · 医疗科技</div>
+
+  <!-- TIER 1: 全球科技巨头 -->
+  <div class="tier-block">
+    <div class="tier-label">Tier 1 · 全球科技巨头 (Global Big Tech)</div>
+    <div class="cards">
+
+      <div class="card ai">
+        <div class="card-top">
+          <div class="company-name">Google / DeepMind Canada</div>
+          <div class="score-badge score-s">S · 10</div>
+        </div>
+        <div class="tags"><span class="tag tag-ai">AI</span><span class="tag tag-cloud">Cloud</span></div>
+        <div class="card-desc">搜索·广告·云·AI研究，全球最强AI生态之一</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-s" style="width:100%"></div></div><div class="score-num">10</div></div>
+      </div>
+
+      <div class="card ai">
+        <div class="card-top">
+          <div class="company-name">Microsoft</div>
+          <div class="score-badge score-s">S · 10</div>
+        </div>
+        <div class="tags"><span class="tag tag-ai">AI</span><span class="tag tag-cloud">Cloud</span><span class="tag tag-saas">SaaS</span></div>
+        <div class="card-desc">Azure云+OpenAI深度绑定，企业AI转型核心</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-s" style="width:100%"></div></div><div class="score-num">10</div></div>
+      </div>
+
+      <div class="card ai">
+        <div class="card-top">
+          <div class="company-name">Amazon / AWS</div>
+          <div class="score-badge score-s">S · 10</div>
+        </div>
+        <div class="tags"><span class="tag tag-ai">AI</span><span class="tag tag-cloud">Cloud</span></div>
+        <div class="card-desc">云计算+AI基础设施全球领导者</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-s" style="width:100%"></div></div><div class="score-num">10</div></div>
+      </div>
+
+      <div class="card ai">
+        <div class="card-top">
+          <div class="company-name">NVIDIA</div>
+          <div class="score-badge score-s">S · 10</div>
+        </div>
+        <div class="tags"><span class="tag tag-ai">AI</span><span class="tag tag-hw">芯片</span></div>
+        <div class="card-desc">GPU+AI计算，当代AI浪潮最大受益者</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-s" style="width:100%"></div></div><div class="score-num">10</div></div>
+      </div>
+
+      <div class="card ai">
+        <div class="card-top">
+          <div class="company-name">Meta / Facebook Canada</div>
+          <div class="score-badge score-s">S · 9</div>
+        </div>
+        <div class="tags"><span class="tag tag-ai">AI</span></div>
+        <div class="card-desc">社交+AI+广告，Llama开源模型战略强势</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-s" style="width:90%"></div></div><div class="score-num">9</div></div>
+      </div>
+
+      <div class="card tech">
+        <div class="card-top">
+          <div class="company-name">Apple Canada</div>
+          <div class="score-badge score-a">A · 8</div>
+        </div>
+        <div class="tags"><span class="tag tag-hw">硬件</span><span class="tag tag-ai">AI</span></div>
+        <div class="card-desc">端侧AI+硬件生态，Apple Intelligence布局中</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-a" style="width:80%"></div></div><div class="score-num">8</div></div>
+      </div>
+
+      <div class="card tech">
+        <div class="card-top">
+          <div class="company-name">AMD Canada</div>
+          <div class="score-badge score-a">A · 8</div>
+        </div>
+        <div class="tags"><span class="tag tag-hw">芯片</span><span class="tag tag-ai">AI</span></div>
+        <div class="card-desc">CPU/GPU/AI芯片，AI算力竞争中的重要玩家</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-a" style="width:80%"></div></div><div class="score-num">8</div></div>
+      </div>
+
+      <div class="card tech">
+        <div class="card-top">
+          <div class="company-name">Intel Canada</div>
+          <div class="score-badge score-b">B · 6</div>
+        </div>
+        <div class="tags"><span class="tag tag-hw">芯片</span></div>
+        <div class="card-desc">芯片+边缘计算，面临NVIDIA/AMD压力但体量庞大</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-b" style="width:60%"></div></div><div class="score-num">6</div></div>
+      </div>
+
+      <div class="card tech">
+        <div class="card-top">
+          <div class="company-name">IBM Canada</div>
+          <div class="score-badge score-b">B · 6</div>
+        </div>
+        <div class="tags"><span class="tag tag-ai">AI</span><span class="tag tag-cloud">Cloud</span></div>
+        <div class="card-desc">混合云+Watson AI，企业级转型稳健但增速慢</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-b" style="width:60%"></div></div><div class="score-num">6</div></div>
+      </div>
+
+      <div class="card tech">
+        <div class="card-top">
+          <div class="company-name">Adobe Canada</div>
+          <div class="score-badge score-a">A · 7</div>
+        </div>
+        <div class="tags"><span class="tag tag-ai">AI</span><span class="tag tag-saas">SaaS</span></div>
+        <div class="card-desc">创意AI（Firefly）+营销云，设计领域护城河深</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-a" style="width:70%"></div></div><div class="score-num">7</div></div>
+      </div>
+
+      <div class="card tech">
+        <div class="card-top">
+          <div class="company-name">Salesforce Canada</div>
+          <div class="score-badge score-a">A · 7</div>
+        </div>
+        <div class="tags"><span class="tag tag-ai">AI</span><span class="tag tag-saas">SaaS</span></div>
+        <div class="card-desc">CRM+Einstein AI，企业SaaS深度整合AI</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-a" style="width:70%"></div></div><div class="score-num">7</div></div>
+      </div>
+
+      <div class="card tech">
+        <div class="card-top">
+          <div class="company-name">Uber Canada</div>
+          <div class="score-badge score-a">A · 7</div>
+        </div>
+        <div class="tags"><span class="tag tag-ai">AI</span></div>
+        <div class="card-desc">出行+外卖+ML调度，平台经济中AI应用先行者</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-a" style="width:70%"></div></div><div class="score-num">7</div></div>
+      </div>
+
+      <div class="card tech">
+        <div class="card-top">
+          <div class="company-name">Shopify</div>
+          <div class="score-badge score-s">S · 9</div>
+        </div>
+        <div class="tags"><span class="tag tag-ai">AI</span><span class="tag tag-saas">SaaS</span></div>
+        <div class="card-desc">加拿大最强科技独角兽，电商+AI+支付生态完整</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-s" style="width:90%"></div></div><div class="score-num">9</div></div>
+      </div>
+
+      <div class="card tech">
+        <div class="card-top">
+          <div class="company-name">Oracle Canada</div>
+          <div class="score-badge score-b">B · 6</div>
+        </div>
+        <div class="tags"><span class="tag tag-cloud">Cloud</span><span class="tag tag-saas">ERP</span></div>
+        <div class="card-desc">数据库+云ERP，企业级市场份额稳固</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-b" style="width:60%"></div></div><div class="score-num">6</div></div>
+      </div>
+
+      <div class="card tech">
+        <div class="card-top">
+          <div class="company-name">SAP Canada</div>
+          <div class="score-badge score-b">B · 6</div>
+        </div>
+        <div class="tags"><span class="tag tag-saas">ERP</span></div>
+        <div class="card-desc">供应链+财务系统，企业软件传统强者</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-b" style="width:60%"></div></div><div class="score-num">6</div></div>
+      </div>
+
+      <div class="card tech">
+        <div class="card-top">
+          <div class="company-name">Cisco Canada</div>
+          <div class="score-badge score-b">B · 5</div>
+        </div>
+        <div class="tags"><span class="tag tag-saas">网络</span></div>
+        <div class="card-desc">网络安全+企业基础设施，成熟稳定</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-b" style="width:50%"></div></div><div class="score-num">5</div></div>
+      </div>
+
+      <div class="card tech">
+        <div class="card-top">
+          <div class="company-name">Thomson Reuters</div>
+          <div class="score-badge score-a">A · 7</div>
+        </div>
+        <div class="tags"><span class="tag tag-ai">AI</span><span class="tag tag-saas">Legal</span></div>
+        <div class="card-desc">法律+税务数据+AI，专业服务AI化的核心平台</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-a" style="width:70%"></div></div><div class="score-num">7</div></div>
+      </div>
+
+      <div class="card tech">
+        <div class="card-top">
+          <div class="company-name">OpenText</div>
+          <div class="score-badge score-b">B · 5</div>
+        </div>
+        <div class="tags"><span class="tag tag-saas">ECM</span></div>
+        <div class="card-desc">企业内容管理+安全，成熟市场稳健型</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-b" style="width:50%"></div></div><div class="score-num">5</div></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TIER 2: 大型金融机构数字化 -->
+  <div class="tier-block">
+    <div class="tier-label">Tier 2 · 大型金融机构数字化 (Big Bank Digital)</div>
+    <div class="cards">
+
+      <div class="card fin">
+        <div class="card-top">
+          <div class="company-name">RBC / RBCx</div>
+          <div class="score-badge score-a">A · 8</div>
+        </div>
+        <div class="tags"><span class="tag tag-fin">FinTech</span><span class="tag tag-ai">AI</span></div>
+        <div class="card-desc">数字银行+AI+风投，加拿大最大银行数字化领头羊</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-a" style="width:80%"></div></div><div class="score-num">8</div></div>
+      </div>
+
+      <div class="card fin">
+        <div class="card-top">
+          <div class="company-name">TD Bank Digital</div>
+          <div class="score-badge score-a">A · 7</div>
+        </div>
+        <div class="tags"><span class="tag tag-fin">FinTech</span><span class="tag tag-ai">AI</span></div>
+        <div class="card-desc">银行科技+数据风控，数字金融转型积极</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-a" style="width:70%"></div></div><div class="score-num">7</div></div>
+      </div>
+
+      <div class="card fin">
+        <div class="card-top">
+          <div class="company-name">Scotiabank Digital Factory</div>
+          <div class="score-badge score-b">B · 6</div>
+        </div>
+        <div class="tags"><span class="tag tag-fin">FinTech</span></div>
+        <div class="card-desc">数字银行+产品设计，创新文化持续建设中</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-b" style="width:60%"></div></div><div class="score-num">6</div></div>
+      </div>
+
+      <div class="card fin">
+        <div class="card-top">
+          <div class="company-name">CIBC Digital</div>
+          <div class="score-badge score-b">B · 6</div>
+        </div>
+        <div class="tags"><span class="tag tag-fin">FinTech</span></div>
+        <div class="card-desc">移动银行+支付+风控，稳健数字化</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-b" style="width:60%"></div></div><div class="score-num">6</div></div>
+      </div>
+
+      <div class="card fin">
+        <div class="card-top">
+          <div class="company-name">BMO Digital</div>
+          <div class="score-badge score-a">A · 7</div>
+        </div>
+        <div class="tags"><span class="tag tag-fin">FinTech</span><span class="tag tag-ai">AI</span></div>
+        <div class="card-desc">数字银行+AI+企业金融科技，积极整合AI能力</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-a" style="width:70%"></div></div><div class="score-num">7</div></div>
+      </div>
+
+      <div class="card fin">
+        <div class="card-top">
+          <div class="company-name">Manulife Digital</div>
+          <div class="score-badge score-b">B · 6</div>
+        </div>
+        <div class="tags"><span class="tag tag-fin">InsurTech</span><span class="tag tag-health">健康</span></div>
+        <div class="card-desc">保险+健康数据+财富管理，数字化稳步推进</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-b" style="width:60%"></div></div><div class="score-num">6</div></div>
+      </div>
+
+      <div class="card fin">
+        <div class="card-top">
+          <div class="company-name">Sun Life Digital</div>
+          <div class="score-badge score-b">B · 6</div>
+        </div>
+        <div class="tags"><span class="tag tag-fin">InsurTech</span><span class="tag tag-health">健康</span></div>
+        <div class="card-desc">保险科技+健康管理，数据平台建设中</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-b" style="width:60%"></div></div><div class="score-num">6</div></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TIER 3: 细分赛道龙头 -->
+  <div class="tier-block">
+    <div class="tier-label">Tier 3 · 细分赛道龙头 (Category Leaders)</div>
+    <div class="cards">
+
+      <div class="card ai">
+        <div class="card-top">
+          <div class="company-name">Cohere</div>
+          <div class="score-badge score-s">S · 10</div>
+        </div>
+        <div class="tags"><span class="tag tag-ai">AI · LLM</span></div>
+        <div class="card-desc">企业级大模型+RAG，多伦多原生AI独角兽，与OpenAI/Anthropic同级竞争</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-s" style="width:100%"></div></div><div class="score-num">10</div></div>
+      </div>
+
+      <div class="card tech">
+        <div class="card-top">
+          <div class="company-name">1Password</div>
+          <div class="score-badge score-a">A · 8</div>
+        </div>
+        <div class="tags"><span class="tag tag-saas">安全</span></div>
+        <div class="card-desc">密码管理+企业身份安全，B2B护城河极深</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-a" style="width:80%"></div></div><div class="score-num">8</div></div>
+      </div>
+
+      <div class="card tech">
+        <div class="card-top">
+          <div class="company-name">D2L / Brightspace</div>
+          <div class="score-badge score-b">B · 6</div>
+        </div>
+        <div class="tags"><span class="tag tag-saas">EdTech</span></div>
+        <div class="card-desc">学习管理系统+在线教育，教育科技稳定龙头</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-b" style="width:60%"></div></div><div class="score-num">6</div></div>
+      </div>
+
+      <div class="card tech">
+        <div class="card-top">
+          <div class="company-name">Ecobee</div>
+          <div class="score-badge score-b">B · 6</div>
+        </div>
+        <div class="tags"><span class="tag tag-saas">IoT</span></div>
+        <div class="card-desc">智能恒温器+IoT，智能家居细分领导者</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-b" style="width:60%"></div></div><div class="score-num">6</div></div>
+      </div>
+
+      <div class="card tech">
+        <div class="card-top">
+          <div class="company-name">BlueCat Networks</div>
+          <div class="score-badge score-b">B · 5</div>
+        </div>
+        <div class="tags"><span class="tag tag-saas">网络安全</span></div>
+        <div class="card-desc">DNS/DHCP/网络安全，企业基础设施细分</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-b" style="width:50%"></div></div><div class="score-num">5</div></div>
+      </div>
+
+      <div class="card fin">
+        <div class="card-top">
+          <div class="company-name">Wealthsimple</div>
+          <div class="score-badge score-s">S · 9</div>
+        </div>
+        <div class="tags"><span class="tag tag-fin">FinTech</span><span class="tag tag-ai">AI</span></div>
+        <div class="card-desc">投资+加密+税务+个人理财，加拿大最受欢迎零售金融科技</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-s" style="width:90%"></div></div><div class="score-num">9</div></div>
+      </div>
+
+      <div class="card tech">
+        <div class="card-top">
+          <div class="company-name">Varicent</div>
+          <div class="score-badge score-b">B · 6</div>
+        </div>
+        <div class="tags"><span class="tag tag-saas">SaaS</span></div>
+        <div class="card-desc">销售绩效管理+RevOps，B2B SaaS稳健</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-b" style="width:60%"></div></div><div class="score-num">6</div></div>
+      </div>
+
+      <div class="card health">
+        <div class="card-top">
+          <div class="company-name">League</div>
+          <div class="score-badge score-a">A · 7</div>
+        </div>
+        <div class="tags"><span class="tag tag-health">HealthTech</span><span class="tag tag-saas">SaaS</span></div>
+        <div class="card-desc">员工健康+保险体验平台，企业健康科技成长型</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-a" style="width:70%"></div></div><div class="score-num">7</div></div>
+      </div>
+
+      <div class="card health">
+        <div class="card-top">
+          <div class="company-name">PointClickCare</div>
+          <div class="score-badge score-a">A · 7</div>
+        </div>
+        <div class="tags"><span class="tag tag-health">HealthTech</span><span class="tag tag-saas">EHR</span></div>
+        <div class="card-desc">长期护理+医疗数据+EHR，北美医疗IT独角兽</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-a" style="width:70%"></div></div><div class="score-num">7</div></div>
+      </div>
+
+      <div class="card health">
+        <div class="card-top">
+          <div class="company-name">Think Research</div>
+          <div class="score-badge score-b">B · 6</div>
+        </div>
+        <div class="tags"><span class="tag tag-health">HealthTech</span><span class="tag tag-ai">AI</span></div>
+        <div class="card-desc">临床决策支持+数字健康，医疗AI应用平台</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-b" style="width:60%"></div></div><div class="score-num">6</div></div>
+      </div>
+
+      <div class="card health">
+        <div class="card-top">
+          <div class="company-name">Dialogue</div>
+          <div class="score-badge score-a">A · 7</div>
+        </div>
+        <div class="tags"><span class="tag tag-health">HealthTech</span></div>
+        <div class="card-desc">远程医疗+心理健康，员工健康SaaS快速扩张</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-a" style="width:70%"></div></div><div class="score-num">7</div></div>
+      </div>
+
+      <div class="card fin">
+        <div class="card-top">
+          <div class="company-name">Hootsuite</div>
+          <div class="score-badge score-b">B · 5</div>
+        </div>
+        <div class="tags"><span class="tag tag-saas">MarTech</span></div>
+        <div class="card-desc">社交媒体管理，细分赛道老牌龙头，增速趋缓</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-b" style="width:50%"></div></div><div class="score-num">5</div></div>
+      </div>
+
+      <div class="card fin">
+        <div class="card-top">
+          <div class="company-name">FreshBooks</div>
+          <div class="score-badge score-b">B · 6</div>
+        </div>
+        <div class="tags"><span class="tag tag-fin">FinTech</span><span class="tag tag-saas">SaaS</span></div>
+        <div class="card-desc">云会计+自由职业者财务，小微企业SaaS稳健</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-b" style="width:60%"></div></div><div class="score-num">6</div></div>
+      </div>
+
+      <div class="card fin">
+        <div class="card-top">
+          <div class="company-name">Borrowell</div>
+          <div class="score-badge score-b">B · 6</div>
+        </div>
+        <div class="tags"><span class="tag tag-fin">FinTech</span><span class="tag tag-ai">AI</span></div>
+        <div class="card-desc">信用评分+AI贷款推荐，个人金融科技本土领先</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-b" style="width:60%"></div></div><div class="score-num">6</div></div>
+      </div>
+
+      <div class="card fin">
+        <div class="card-top">
+          <div class="company-name">Koho</div>
+          <div class="score-badge score-a">A · 7</div>
+        </div>
+        <div class="tags"><span class="tag tag-fin">FinTech</span></div>
+        <div class="card-desc">数字账户+信用建设，加拿大新兴消费金融快速增长</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-a" style="width:70%"></div></div><div class="score-num">7</div></div>
+      </div>
+
+      <div class="card fin">
+        <div class="card-top">
+          <div class="company-name">Wave Financial</div>
+          <div class="score-badge score-b">B · 6</div>
+        </div>
+        <div class="tags"><span class="tag tag-fin">FinTech</span><span class="tag tag-saas">SaaS</span></div>
+        <div class="card-desc">小企业会计+工资软件，H&R Block旗下稳定平台</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-b" style="width:60%"></div></div><div class="score-num">6</div></div>
+      </div>
+
+      <div class="card fin">
+        <div class="card-top">
+          <div class="company-name">FundThrough</div>
+          <div class="score-badge score-b">B · 6</div>
+        </div>
+        <div class="tags"><span class="tag tag-fin">FinTech</span><span class="tag tag-ai">AI</span></div>
+        <div class="card-desc">AI驱动发票融资，中小企业现金流解决方案</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-b" style="width:60%"></div></div><div class="score-num">6</div></div>
+      </div>
+
+      <div class="card fin">
+        <div class="card-top">
+          <div class="company-name">Nuvei</div>
+          <div class="score-badge score-a">A · 8</div>
+        </div>
+        <div class="tags"><span class="tag tag-fin">支付</span></div>
+        <div class="card-desc">全球支付+跨境交易，加拿大支付科技上市独角兽</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-a" style="width:80%"></div></div><div class="score-num">8</div></div>
+      </div>
+
+      <div class="card tech">
+        <div class="card-top">
+          <div class="company-name">CaseWare</div>
+          <div class="score-badge score-b">B · 5</div>
+        </div>
+        <div class="tags"><span class="tag tag-fin">合规</span><span class="tag tag-saas">SaaS</span></div>
+        <div class="card-desc">审计+财务合规软件，会计科技细分龙头</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-b" style="width:50%"></div></div><div class="score-num">5</div></div>
+      </div>
+
+      <div class="card tech">
+        <div class="card-top">
+          <div class="company-name">Top Hat</div>
+          <div class="score-badge score-b">B · 5</div>
+        </div>
+        <div class="tags"><span class="tag tag-saas">EdTech</span></div>
+        <div class="card-desc">高校互动教学+教材平台，EdTech细分稳定</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-b" style="width:50%"></div></div><div class="score-num">5</div></div>
+      </div>
+
+      <div class="card health">
+        <div class="card-top">
+          <div class="company-name">Klick Health</div>
+          <div class="score-badge score-b">B · 6</div>
+        </div>
+        <div class="tags"><span class="tag tag-health">HealthTech</span><span class="tag tag-ai">AI</span></div>
+        <div class="card-desc">医疗营销+生命科学数字化，健康数据创意公司</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-b" style="width:60%"></div></div><div class="score-num">6</div></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TIER 4: 创新/成长型 AI & Tech -->
+  <div class="tier-block">
+    <div class="tier-label">Tier 4 · 创新/成长型企业 (High-Growth Innovators)</div>
+    <div class="cards">
+
+      <div class="card ai">
+        <div class="card-top">
+          <div class="company-name">Tenstorrent</div>
+          <div class="score-badge score-s">S · 10</div>
+        </div>
+        <div class="tags"><span class="tag tag-hw">AI芯片</span><span class="tag tag-ai">AI</span></div>
+        <div class="card-desc">Jim Keller主导，AI处理器+RISC-V，下一代AI算力基础设施竞争者</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-s" style="width:100%"></div></div><div class="score-num">10</div></div>
+      </div>
+
+      <div class="card ai">
+        <div class="card-top">
+          <div class="company-name">Untether AI</div>
+          <div class="score-badge score-s">S · 9</div>
+        </div>
+        <div class="tags"><span class="tag tag-hw">AI芯片</span><span class="tag tag-ai">AI</span></div>
+        <div class="card-desc">边缘AI推理芯片+低功耗加速器，AI硬件稀缺赛道</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-s" style="width:90%"></div></div><div class="score-num">9</div></div>
+      </div>
+
+      <div class="card ai">
+        <div class="card-top">
+          <div class="company-name">Xanadu</div>
+          <div class="score-badge score-s">S · 9</div>
+        </div>
+        <div class="tags"><span class="tag tag-hw">量子计算</span><span class="tag tag-ai">AI</span></div>
+        <div class="card-desc">光量子计算+量子云平台，下一代计算基础设施前沿</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-s" style="width:90%"></div></div><div class="score-num">9</div></div>
+      </div>
+
+      <div class="card ai">
+        <div class="card-top">
+          <div class="company-name">Waabi</div>
+          <div class="score-badge score-s">S · 9</div>
+        </div>
+        <div class="tags"><span class="tag tag-ai">自动驾驶</span></div>
+        <div class="card-desc">Raquel Urtasun创立，自动驾驶卡车+AI仿真，顶级技术团队</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-s" style="width:90%"></div></div><div class="score-num">9</div></div>
+      </div>
+
+      <div class="card ai">
+        <div class="card-top">
+          <div class="company-name">BenchSci</div>
+          <div class="score-badge score-s">S · 9</div>
+        </div>
+        <div class="tags"><span class="tag tag-ai">AI</span><span class="tag tag-bio">生命科学</span></div>
+        <div class="card-desc">AI药研+生命科学知识平台，制药公司大客户稳定</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-s" style="width:90%"></div></div><div class="score-num">9</div></div>
+      </div>
+
+      <div class="card ai">
+        <div class="card-top">
+          <div class="company-name">Deep Genomics</div>
+          <div class="score-badge score-s">S · 9</div>
+        </div>
+        <div class="tags"><span class="tag tag-ai">AI</span><span class="tag tag-bio">生物科技</span></div>
+        <div class="card-desc">AI RNA药物研发+基因组学，生物AI最前沿</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-s" style="width:90%"></div></div><div class="score-num">9</div></div>
+      </div>
+
+      <div class="card ai">
+        <div class="card-top">
+          <div class="company-name">Cyclica</div>
+          <div class="score-badge score-a">A · 8</div>
+        </div>
+        <div class="tags"><span class="tag tag-ai">AI</span><span class="tag tag-bio">药物研发</span></div>
+        <div class="card-desc">AI药物发现+分子建模，生物医药计算平台</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-a" style="width:80%"></div></div><div class="score-num">8</div></div>
+      </div>
+
+      <div class="card ai">
+        <div class="card-top">
+          <div class="company-name">BlueDot</div>
+          <div class="score-badge score-a">A · 8</div>
+        </div>
+        <div class="tags"><span class="tag tag-ai">公卫AI</span><span class="tag tag-health">HealthTech</span></div>
+        <div class="card-desc">传染病AI监测+公共卫生预警，COVID预测先于WHO</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-a" style="width:80%"></div></div><div class="score-num">8</div></div>
+      </div>
+
+      <div class="card ai">
+        <div class="card-top">
+          <div class="company-name">Ada</div>
+          <div class="score-badge score-a">A · 8</div>
+        </div>
+        <div class="tags"><span class="tag tag-ai">客服AI</span></div>
+        <div class="card-desc">AI客服+自动化对话平台，企业客服AI全球扩张</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-a" style="width:80%"></div></div><div class="score-num">8</div></div>
+      </div>
+
+      <div class="card ai">
+        <div class="card-top">
+          <div class="company-name">Ecopia AI</div>
+          <div class="score-badge score-a">A · 8</div>
+        </div>
+        <div class="tags"><span class="tag tag-ai">地理空间AI</span></div>
+        <div class="card-desc">地理空间AI+地图数据+基础设施智能分析</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-a" style="width:80%"></div></div><div class="score-num">8</div></div>
+      </div>
+
+      <div class="card health">
+        <div class="card-top">
+          <div class="company-name">Maple</div>
+          <div class="score-badge score-a">A · 8</div>
+        </div>
+        <div class="tags"><span class="tag tag-health">数字医疗</span></div>
+        <div class="card-desc">在线问诊+处方+远程医疗，加拿大数字医疗快速增长</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-a" style="width:80%"></div></div><div class="score-num">8</div></div>
+      </div>
+
+      <div class="card health">
+        <div class="card-top">
+          <div class="company-name">PocketHealth</div>
+          <div class="score-badge score-a">A · 7</div>
+        </div>
+        <div class="tags"><span class="tag tag-health">HealthTech</span></div>
+        <div class="card-desc">医学影像共享+患者数据平台，医疗数据互操作性</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-a" style="width:70%"></div></div><div class="score-num">7</div></div>
+      </div>
+
+      <div class="card fin">
+        <div class="card-top">
+          <div class="company-name">Relay Financial</div>
+          <div class="score-badge score-a">A · 8</div>
+        </div>
+        <div class="tags"><span class="tag tag-fin">FinTech</span></div>
+        <div class="card-desc">中小企业银行账户+现金流管理，B2B金融科技高增长</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-a" style="width:80%"></div></div><div class="score-num">8</div></div>
+      </div>
+
+      <div class="card fin">
+        <div class="card-top">
+          <div class="company-name">Float Financial</div>
+          <div class="score-badge score-a">A · 8</div>
+        </div>
+        <div class="tags"><span class="tag tag-fin">FinTech</span></div>
+        <div class="card-desc">企业卡+费用管理+财务自动化，Ramp加拿大版</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-a" style="width:80%"></div></div><div class="score-num">8</div></div>
+      </div>
+
+      <div class="card fin">
+        <div class="card-top">
+          <div class="company-name">Flinks</div>
+          <div class="score-badge score-a">A · 8</div>
+        </div>
+        <div class="tags"><span class="tag tag-fin">开放银行</span><span class="tag tag-ai">AI</span></div>
+        <div class="card-desc">开放银行+金融数据连接，加拿大金融数据基础设施</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-a" style="width:80%"></div></div><div class="score-num">8</div></div>
+      </div>
+
+      <div class="card tech">
+        <div class="card-top">
+          <div class="company-name">StackAdapt</div>
+          <div class="score-badge score-a">A · 8</div>
+        </div>
+        <div class="tags"><span class="tag tag-ai">AI</span><span class="tag tag-saas">AdTech</span></div>
+        <div class="card-desc">程序化广告+AI内容推荐，MarTech快速增长独角兽</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-a" style="width:80%"></div></div><div class="score-num">8</div></div>
+      </div>
+
+      <div class="card tech">
+        <div class="card-top">
+          <div class="company-name">Coconut Software</div>
+          <div class="score-badge score-b">B · 6</div>
+        </div>
+        <div class="tags"><span class="tag tag-fin">FinTech</span><span class="tag tag-saas">SaaS</span></div>
+        <div class="card-desc">银行客户体验+预约SaaS，金融服务垂直细分</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-b" style="width:60%"></div></div><div class="score-num">6</div></div>
+      </div>
+
+      <div class="card fin">
+        <div class="card-top">
+          <div class="company-name">Properly</div>
+          <div class="score-badge score-b">B · 6</div>
+        </div>
+        <div class="tags"><span class="tag tag-prop">PropTech</span><span class="tag tag-ai">AI</span></div>
+        <div class="card-desc">房屋交易+AI估值，房产科技平台</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-b" style="width:60%"></div></div><div class="score-num">6</div></div>
+      </div>
+
+      <div class="card tech">
+        <div class="card-top">
+          <div class="company-name">Doormat</div>
+          <div class="score-badge score-b">B · 5</div>
+        </div>
+        <div class="tags"><span class="tag tag-prop">PropTech</span></div>
+        <div class="card-desc">数字房产法律服务+交易流程，法律科技细分</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-b" style="width:50%"></div></div><div class="score-num">5</div></div>
+      </div>
+
+      <div class="card tech">
+        <div class="card-top">
+          <div class="company-name">Loopio</div>
+          <div class="score-badge score-a">A · 7</div>
+        </div>
+        <div class="tags"><span class="tag tag-ai">AI</span><span class="tag tag-saas">SaaS</span></div>
+        <div class="card-desc">AI驱动RFP响应+企业知识库，B2B销售效率工具</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-a" style="width:70%"></div></div><div class="score-num">7</div></div>
+      </div>
+
+      <div class="card fin">
+        <div class="card-top">
+          <div class="company-name">Nudge</div>
+          <div class="score-badge score-b">B · 6</div>
+        </div>
+        <div class="tags"><span class="tag tag-saas">SaaS</span></div>
+        <div class="card-desc">一线员工沟通+零售运营SaaS，企业协作工具</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-b" style="width:60%"></div></div><div class="score-num">6</div></div>
+      </div>
+
+      <div class="card fin">
+        <div class="card-top">
+          <div class="company-name">Plooto</div>
+          <div class="score-badge score-b">B · 6</div>
+        </div>
+        <div class="tags"><span class="tag tag-fin">FinTech</span><span class="tag tag-saas">SaaS</span></div>
+        <div class="card-desc">应付账款+收付款自动化，中小企业财务SaaS</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-b" style="width:60%"></div></div><div class="score-num">6</div></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ======== LIST 2: 其他 ======== -->
+  <hr class="big-divider" data-label="LIST 2 · 非AI / 非科技 / 非金融 / 非医疗类">
+
+  <div class="section-title red">▸ List 2 — 其他类公司（消费·零售·餐饮·媒体·内容·体育）</div>
+
+  <div class="tier-block">
+    <div class="tier-label">消费 · 零售 · 餐饮 · 内容 · 体育类</div>
+    <div class="cards">
+
+      <div class="card other">
+        <div class="card-top">
+          <div class="company-name">Wattpad</div>
+          <div class="score-badge score-b">B · 6</div>
+        </div>
+        <div class="tags"><span class="tag tag-saas">内容平台</span></div>
+        <div class="card-desc">网络文学+IP孵化+创作者社区，全球最大网络故事平台，已被韩国Naver收购</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-b" style="width:60%"></div></div><div class="score-num">6</div></div>
+      </div>
+
+      <div class="card other">
+        <div class="card-top">
+          <div class="company-name">theScore / PENN Interactive</div>
+          <div class="score-badge score-b">B · 6</div>
+        </div>
+        <div class="tags"><span class="tag tag-saas">体育科技</span></div>
+        <div class="card-desc">体育媒体+数据+博彩，PENN Entertainment旗下</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-b" style="width:60%"></div></div><div class="score-num">6</div></div>
+      </div>
+
+      <div class="card other">
+        <div class="card-top">
+          <div class="company-name">Ritual</div>
+          <div class="score-badge score-b">B · 5</div>
+        </div>
+        <div class="tags"><span class="tag tag-saas">本地消费</span></div>
+        <div class="card-desc">移动点餐+办公室订餐，本地餐饮科技平台</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-b" style="width:50%"></div></div><div class="score-num">5</div></div>
+      </div>
+
+      <div class="card other">
+        <div class="card-top">
+          <div class="company-name">Flashfood</div>
+          <div class="score-badge score-b">B · 6</div>
+        </div>
+        <div class="tags"><span class="tag tag-saas">可持续消费</span></div>
+        <div class="card-desc">临期食品电商+零售减废，可持续消费赛道具有社会价值</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-b" style="width:60%"></div></div><div class="score-num">6</div></div>
+      </div>
+
+      <div class="card other">
+        <div class="card-top">
+          <div class="company-name">Knix / Knix Tech-enabled Retail</div>
+          <div class="score-badge score-b">B · 5</div>
+        </div>
+        <div class="tags"><span class="tag tag-saas">DTC零售</span></div>
+        <div class="card-desc">女性健康消费品+DTC电商，数据驱动零售</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-b" style="width:50%"></div></div><div class="score-num">5</div></div>
+      </div>
+
+      <div class="card other">
+        <div class="card-top">
+          <div class="company-name">Drop (消费金融)</div>
+          <div class="score-badge score-c">C · 4</div>
+        </div>
+        <div class="tags"><span class="tag tag-saas">会员·奖励</span></div>
+        <div class="card-desc">会员奖励+消费数据+金融营销，忠诚度平台竞争激烈</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-c" style="width:40%"></div></div><div class="score-num">4</div></div>
+      </div>
+
+      <div class="card other">
+        <div class="card-top">
+          <div class="company-name">TouchBistro</div>
+          <div class="score-badge score-b">B · 5</div>
+        </div>
+        <div class="tags"><span class="tag tag-saas">餐饮SaaS</span></div>
+        <div class="card-desc">餐饮POS+订位+餐厅经营SaaS，垂直领域细分</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-b" style="width:50%"></div></div><div class="score-num">5</div></div>
+      </div>
+
+      <div class="card other">
+        <div class="card-top">
+          <div class="company-name">Fable (无障碍科技)</div>
+          <div class="score-badge score-c">C · 4</div>
+        </div>
+        <div class="tags"><span class="tag tag-saas">无障碍</span></div>
+        <div class="card-desc">数字无障碍测试+用户研究，社会价值强但市场规模受限</div>
+        <div class="score-bar-wrap"><div class="score-bar"><div class="score-fill fill-c" style="width:40%"></div></div><div class="score-num">4</div></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div style="margin-top:40px; padding:16px; background:var(--surface); border:1px solid var(--border); border-radius:8px; font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--muted); line-height:1.8;">
+    <div style="color:var(--accent); margin-bottom:6px;">// 评分说明</div>
+    <div>S (9–10) · 全球/市场结构性领导者，AI时代核心受益或前沿创造者</div>
+    <div>A (7–8)  · 细分赛道高成长，具备强护城河或快速扩张中</div>
+    <div>B (5–6)  · 稳健型，市场地位稳定但增速或差异化有限</div>
+    <div>C (3–4)  · 细分市场有限，竞争压力大或市场规模天花板低</div>
+    <div style="margin-top:8px; color:var(--muted)">数据来源：Non-stop Ashley · 多伦多科技公司列表 | 整理：2026.06</div>
+  </div>
+
+</div>
+</body>
+</html>
