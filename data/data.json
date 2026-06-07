@@ -280,6 +280,32 @@
       "mlops_us": 1138,
       "llm_eng_ca": 158,
       "llm_eng_us": 3208
+    },
+    {
+      "week": "2026-06-07",
+      "mle_ca": 485,
+      "mle_us": 10937,
+      "ds_ca": 2623,
+      "ds_us": 21096,
+      "ai_eng_ca": 2023,
+      "ai_eng_us": 46456,
+      "mlops_ca": 121,
+      "mlops_us": 1138,
+      "llm_eng_ca": 158,
+      "llm_eng_us": 3208
+    },
+    {
+      "week": "2026-06-07",
+      "mle_ca": 485,
+      "mle_us": 10937,
+      "ds_ca": 2623,
+      "ds_us": 21096,
+      "ai_eng_ca": 2023,
+      "ai_eng_us": 46456,
+      "mlops_ca": 121,
+      "mlops_us": 1138,
+      "llm_eng_ca": 158,
+      "llm_eng_us": 3208
     }
   ]
 }
