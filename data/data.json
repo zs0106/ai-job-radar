@@ -1,0 +1,20 @@
+{
+  "last_updated": "2026-06-07",
+  "week_label": "Week of June 7, 2026",
+  "job_counts": {
+    "mle": {"ca": 0, "us": 0, "ca_wow": 0, "us_wow": 0},
+    "ds": {"ca": 0, "us": 0, "ca_wow": 0, "us_wow": 0},
+    "ai_eng": {"ca": 0, "us": 0, "ca_wow": 0, "us_wow": 0},
+    "mlops": {"ca": 0, "us": 0, "ca_wow": 0, "us_wow": 0},
+    "llm_eng": {"ca": 0, "us": 0, "ca_wow": 0, "us_wow": 0}
+  },
+  "top_skills": [],
+  "top_companies": {
+    "toronto": [],
+    "vancouver": [],
+    "san_francisco": [],
+    "new_york": []
+  },
+  "salary_ranges": {},
+  "history": []
+}

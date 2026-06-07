@@ -1,0 +1,49 @@
+name: Weekly Data Fetch
+
+on:
+  schedule:
+    # Every Sunday at 04:00 UTC (Saturday 11pm EST)
+    - cron: "0 4 * * 0"
+  workflow_dispatch:
+
+jobs:
+  fetch-jobs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Cache pip dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run data fetch
+        env:
+          ADZUNA_APP_ID: ${{ secrets.ADZUNA_APP_ID }}
+          ADZUNA_APP_KEY: ${{ secrets.ADZUNA_APP_KEY }}
+          GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
+        run: python scripts/fetch_jobs.py
+
+      - name: Commit and push data.json if changed
+        run: |
+          git config user.name "Hiring Signal Bot"
+          git config user.email "action@github.com"
+          git add data/data.json
+          git diff --staged --quiet || git commit -m "data: weekly update $(date +%Y-%m-%d)"
+          git push

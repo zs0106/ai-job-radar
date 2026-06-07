@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hiring Signal — AI Job Market Intelligence</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #1a2332;
+    --blue: #0ea5e9;
+    --blue-light: #38bdf8;
+    --green: #22c55e;
+    --red: #ef4444;
+    --orange: #f97316;
+    --text: #1e293b;
+    --muted: #64748b;
+    --border: #e2e8f0;
+    --bg: #f8fafc;
+  }
+
+  body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  /* Header */
+  header {
+    background: var(--navy);
+    color: white;
+    padding: 20px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  header h1 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; }
+  header .meta { font-size: 0.85rem; opacity: 0.7; text-align: right; }
+  header .subtitle {
+    width: 100%;
+    font-size: 0.875rem;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+
+  /* Loading / Error */
+  #loading, #error {
+    text-align: center;
+    padding: 80px 20px;
+    color: var(--muted);
+    font-size: 1rem;
+  }
+  #error { color: var(--red); display: none; }
+  .spinner {
+    width: 36px; height: 36px;
+    border: 3px solid var(--border);
+    border-top-color: var(--blue);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto 16px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* Main content */
+  #content { display: none; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+  /* Section */
+  section { padding: 32px 0; border-bottom: 1px solid var(--border); }
+  section:last-of-type { border-bottom: none; }
+  h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+
+  /* Metric cards */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+  }
+  .card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    border-top: 3px solid var(--blue);
+  }
+  .card-label { font-size: 0.8rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 8px; }
+  .card-value { font-size: 2rem; font-weight: 700; color: var(--navy); line-height: 1; }
+  .card-wow { font-size: 0.85rem; margin-top: 6px; font-weight: 500; }
+  .up { color: var(--green); }
+  .down { color: var(--red); }
+  .flat { color: var(--muted); }
+
+  /* Charts */
+  .chart-wrap {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px;
+  }
+  .chart-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 16px;
+  }
+  canvas { max-height: 320px; }
+
+  /* Two-column charts */
+  .charts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 768px) {
+    .charts-grid { grid-template-columns: 1fr; }
+    canvas { max-height: 260px; }
+  }
+
+  /* Companies */
+  .companies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+  }
+  .company-region {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .company-region h3 {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--blue);
+    margin-bottom: 12px;
+  }
+  .company-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.875rem;
+  }
+  .company-item:last-child { border-bottom: none; }
+  .company-name { font-weight: 500; }
+  .company-count {
+    background: var(--navy);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 999px;
+  }
+  .no-data { color: var(--muted); font-size: 0.85rem; font-style: italic; }
+
+  /* Footer */
+  footer {
+    background: var(--navy);
+    color: white;
+    padding: 32px;
+    text-align: center;
+  }
+  footer p { opacity: 0.7; font-size: 0.85rem; margin-bottom: 16px; }
+  footer a {
+    display: inline-block;
+    background: var(--blue);
+    color: white;
+    text-decoration: none;
+    padding: 10px 24px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background 0.15s;
+  }
+  footer a:hover { background: var(--blue-light); }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Hiring Signal</h1>
+    <div class="subtitle">Weekly AI job market intelligence for DS, MLE &amp; AI Engineers in North America</div>
+  </div>
+  <div class="meta">
+    by S. Chen<br>
+    Updated: <span id="last-updated">—</span>
+  </div>
+</header>
+
+<div id="loading">
+  <div class="spinner"></div>
+  Loading latest data…
+</div>
+<div id="error">Failed to load data. Please try again later.</div>
+
+<div id="content">
+
+  <div class="container">
+
+    <!-- Metric cards -->
+    <section>
+      <h2>Job Market Overview</h2>
+      <div class="cards" id="cards"></div>
+    </section>
+
+    <!-- Charts -->
+    <section>
+      <h2>Trends &amp; Skills</h2>
+      <div class="charts-grid">
+        <div class="chart-wrap">
+          <div class="chart-title">Job Count Trend — Last 12 Weeks</div>
+          <canvas id="trendChart"></canvas>
+        </div>
+        <div class="chart-wrap">
+          <div class="chart-title">Top Skills This Week</div>
+          <canvas id="skillChart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- Companies -->
+    <section>
+      <h2>Companies Hiring This Week</h2>
+      <div class="companies-grid" id="companies"></div>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>Data from Adzuna API, refreshed every Sunday at 4am UTC</p>
+    <a href="https://hiringsignal.substack.com" target="_blank" rel="noopener">Subscribe to Hiring Signal →</a>
+  </footer>
+
+</div>
+
+<script>
+const REGIONS = [
+  { key: "toronto", label: "Toronto" },
+  { key: "vancouver", label: "Vancouver" },
+  { key: "san_francisco", label: "San Francisco" },
+  { key: "new_york", label: "New York" },
+];
+
+const CARDS = [
+  { role: "mle", region: "ca", label: "MLE Canada" },
+  { role: "mle", region: "us", label: "MLE US" },
+  { role: "ai_eng", region: "ca", label: "AI Eng Canada" },
+  { role: "ai_eng", region: "us", label: "AI Eng US" },
+];
+
+function wowHtml(pct) {
+  if (pct === 0) return `<span class="flat">— first run</span>`;
+  const cls = pct > 0 ? "up" : "down";
+  const arrow = pct > 0 ? "↑" : "↓";
+  return `<span class="${cls}">${arrow} ${Math.abs(pct).toFixed(1)}% WoW</span>`;
+}
+
+function renderCards(data) {
+  const el = document.getElementById("cards");
+  el.innerHTML = CARDS.map(({ role, region, label }) => {
+    const d = data.job_counts[role] || {};
+    const count = d[region] ?? 0;
+    const wow = d[`${region}_wow`] ?? 0;
+    return `
+      <div class="card">
+        <div class="card-label">${label}</div>
+        <div class="card-value">${count.toLocaleString()}</div>
+        <div class="card-wow">${wowHtml(wow)}</div>
+      </div>`;
+  }).join("");
+}
+
+function renderTrendChart(data) {
+  const history = data.history || [];
+  const labels = history.map(h => {
+    const d = new Date(h.week + "T00:00:00");
+    return d.toLocaleDateString("en-CA", { month: "short", day: "numeric" });
+  });
+  new Chart(document.getElementById("trendChart"), {
+    type: "line",
+    data: {
+      labels,
+      datasets: [
+        { label: "MLE CA", data: history.map(h => h.mle_ca || 0), borderColor: "#1a2332", backgroundColor: "transparent", tension: 0.3, pointRadius: 3 },
+        { label: "MLE US", data: history.map(h => h.mle_us || 0), borderColor: "#0ea5e9", backgroundColor: "transparent", tension: 0.3, pointRadius: 3 },
+        { label: "DS CA", data: history.map(h => h.ds_ca || 0), borderColor: "#22c55e", backgroundColor: "transparent", tension: 0.3, pointRadius: 3 },
+        { label: "AI Eng CA", data: history.map(h => h.ai_eng_ca || 0), borderColor: "#f97316", backgroundColor: "transparent", tension: 0.3, pointRadius: 3 },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      plugins: { legend: { position: "bottom", labels: { boxWidth: 12, font: { size: 11 } } } },
+      scales: {
+        x: { grid: { display: false }, ticks: { font: { size: 10 }, maxRotation: 45 } },
+        y: { grid: { color: "#f1f5f9" }, ticks: { font: { size: 10 } } },
+      },
+    },
+  });
+}
+
+function renderSkillChart(data) {
+  const skills = (data.top_skills || []).slice(0, 15);
+  const labels = skills.map(s => s.skill);
+  const counts = skills.map(s => s.frequency);
+  const colors = skills.map(s => s.new ? "#0ea5e9" : "#1a2332");
+  new Chart(document.getElementById("skillChart"), {
+    type: "bar",
+    data: {
+      labels,
+      datasets: [{
+        label: "Frequency",
+        data: counts,
+        backgroundColor: colors,
+        borderRadius: 3,
+      }],
+    },
+    options: {
+      indexAxis: "y",
+      responsive: true,
+      maintainAspectRatio: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: ctx => ` ${ctx.parsed.x} mentions${skills[ctx.dataIndex]?.new ? " · NEW" : ""}`,
+          },
+        },
+      },
+      scales: {
+        x: { grid: { color: "#f1f5f9" }, ticks: { font: { size: 10 } } },
+        y: { grid: { display: false }, ticks: { font: { size: 11 } } },
+      },
+    },
+  });
+}
+
+function renderCompanies(data) {
+  const el = document.getElementById("companies");
+  el.innerHTML = REGIONS.map(({ key, label }) => {
+    const companies = (data.top_companies?.[key] || []).slice(0, 5);
+    const rows = companies.length
+      ? companies.map(c => `
+          <div class="company-item">
+            <span class="company-name">${c.company}</span>
+            <span class="company-count">${c.count}</span>
+          </div>`).join("")
+      : `<div class="no-data">No data yet</div>`;
+    return `
+      <div class="company-region">
+        <h3>${label}</h3>
+        ${rows}
+      </div>`;
+  }).join("");
+}
+
+async function init() {
+  try {
+    const resp = await fetch("../data/data.json");
+    if (!resp.ok) throw new Error(resp.statusText);
+    const data = await resp.json();
+
+    document.getElementById("last-updated").textContent = data.last_updated || "—";
+    renderCards(data);
+    renderTrendChart(data);
+    renderSkillChart(data);
+    renderCompanies(data);
+
+    document.getElementById("loading").style.display = "none";
+    document.getElementById("content").style.display = "block";
+  } catch (e) {
+    document.getElementById("loading").style.display = "none";
+    document.getElementById("error").style.display = "block";
+    console.error("Failed to load data.json:", e);
+  }
+}
+
+init();
+</script>
+</body>
+</html>
