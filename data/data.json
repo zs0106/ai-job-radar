@@ -1,90 +1,90 @@
 {
-  "last_updated": "2026-06-07",
-  "week_label": "Week of June 7, 2026",
+  "last_updated": "2026-06-14",
+  "week_label": "Week of June 14, 2026",
   "job_counts": {
     "mle": {
-      "ca": 485,
-      "us": 10937,
-      "ca_wow": 0.0,
-      "us_wow": 0.0
+      "ca": 449,
+      "us": 11638,
+      "ca_wow": -7.4,
+      "us_wow": 6.4
     },
     "ds": {
-      "ca": 2623,
-      "us": 21096,
-      "ca_wow": 0.0,
-      "us_wow": 0.0
+      "ca": 2495,
+      "us": 21692,
+      "ca_wow": -4.9,
+      "us_wow": 2.8
     },
     "ai_eng": {
-      "ca": 2023,
-      "us": 46456,
-      "ca_wow": 0.0,
-      "us_wow": 0.0
+      "ca": 1948,
+      "us": 49046,
+      "ca_wow": -3.7,
+      "us_wow": 5.6
     },
     "mlops": {
-      "ca": 121,
-      "us": 1138,
-      "ca_wow": 0.0,
-      "us_wow": 0.0
+      "ca": 108,
+      "us": 1263,
+      "ca_wow": -10.7,
+      "us_wow": 11.0
     },
     "llm_eng": {
-      "ca": 158,
-      "us": 3208,
-      "ca_wow": 0.0,
-      "us_wow": 0.0
+      "ca": 163,
+      "us": 3774,
+      "ca_wow": 3.2,
+      "us_wow": 17.6
     }
   },
   "top_skills": [
     {
       "skill": "mlops",
-      "frequency": 245,
-      "wow_change": 0.0,
-      "new": false
-    },
-    {
-      "skill": "deployment",
-      "frequency": 98,
+      "frequency": 218,
       "wow_change": 0.0,
       "new": false
     },
     {
       "skill": "llm",
-      "frequency": 90,
+      "frequency": 108,
       "wow_change": 0.0,
       "new": false
     },
     {
-      "skill": "python",
-      "frequency": 38,
+      "skill": "deployment",
+      "frequency": 94,
       "wow_change": 0.0,
       "new": false
     },
     {
       "skill": "ci/cd",
-      "frequency": 36,
+      "frequency": 33,
       "wow_change": 0.0,
       "new": false
     },
     {
-      "skill": "aws",
-      "frequency": 28,
+      "skill": "python",
+      "frequency": 29,
       "wow_change": 0.0,
       "new": false
     },
     {
       "skill": "azure",
-      "frequency": 18,
+      "frequency": 28,
       "wow_change": 0.0,
       "new": false
     },
     {
-      "skill": "sql",
-      "frequency": 16,
+      "skill": "aws",
+      "frequency": 23,
+      "wow_change": 0.0,
+      "new": false
+    },
+    {
+      "skill": "fine-tuning",
+      "frequency": 21,
       "wow_change": 0.0,
       "new": false
     },
     {
       "skill": "inference",
-      "frequency": 15,
+      "frequency": 14,
       "wow_change": 0.0,
       "new": false
     },
@@ -96,31 +96,31 @@
     },
     {
       "skill": "mongodb",
-      "frequency": 12,
+      "frequency": 13,
       "wow_change": 0.0,
       "new": false
     },
     {
       "skill": "java",
-      "frequency": 11,
-      "wow_change": 0.0,
-      "new": false
-    },
-    {
-      "skill": "rag",
-      "frequency": 10,
-      "wow_change": 0.0,
-      "new": false
-    },
-    {
-      "skill": "sagemaker",
       "frequency": 8,
       "wow_change": 0.0,
       "new": false
     },
     {
-      "skill": "terraform",
-      "frequency": 6,
+      "skill": "sagemaker",
+      "frequency": 7,
+      "wow_change": 0.0,
+      "new": false
+    },
+    {
+      "skill": "rag",
+      "frequency": 5,
+      "wow_change": 0.0,
+      "new": false
+    },
+    {
+      "skill": "go",
+      "frequency": 4,
       "wow_change": 0.0,
       "new": false
     }
@@ -128,12 +128,12 @@
   "top_companies": {
     "toronto": [
       {
-        "company": "NavitasPartners",
-        "count": 5,
+        "company": "Insight Global",
+        "count": 6,
         "roles": []
       },
       {
-        "company": "Insight Global",
+        "company": "NavitasPartners",
         "count": 4,
         "roles": []
       },
@@ -143,12 +143,12 @@
         "roles": []
       },
       {
-        "company": "eBay",
-        "count": 3,
+        "company": "Tiger Analytics Inc.",
+        "count": 2,
         "roles": []
       },
       {
-        "company": "Tiger Analytics Inc.",
+        "company": "TheAppLabb",
         "count": 2,
         "roles": []
       }
@@ -160,8 +160,8 @@
         "roles": []
       },
       {
-        "company": "NavitasPartners",
-        "count": 4,
+        "company": "SAP",
+        "count": 3,
         "roles": []
       },
       {
@@ -175,61 +175,61 @@
         "roles": []
       },
       {
-        "company": "SAP",
+        "company": "NavitasPartners",
         "count": 2,
         "roles": []
       }
     ],
     "san_francisco": [
       {
-        "company": "Insight Global",
-        "count": 3,
-        "roles": []
-      },
-      {
-        "company": "K Anand Corporation",
-        "count": 2,
-        "roles": []
-      },
-      {
         "company": "Sciforium",
         "count": 2,
         "roles": []
       },
       {
-        "company": "NTT America, Inc.",
-        "count": 2,
+        "company": "Acceler8 Talent",
+        "count": 1,
         "roles": []
       },
       {
-        "company": "TESTINGXPERTS, INC. DBA DAMCOSOFT",
+        "company": "Storm2",
+        "count": 1,
+        "roles": []
+      },
+      {
+        "company": "SPECTRAFORCE",
+        "count": 1,
+        "roles": []
+      },
+      {
+        "company": "Cypress HCM",
         "count": 1,
         "roles": []
       }
     ],
     "new_york": [
       {
+        "company": "Capital One",
+        "count": 3,
+        "roles": []
+      },
+      {
+        "company": "Kforce Technology Staffing",
+        "count": 3,
+        "roles": []
+      },
+      {
         "company": "Bloomberg",
         "count": 2,
         "roles": []
       },
       {
-        "company": "Capital One",
-        "count": 2,
-        "roles": []
-      },
-      {
-        "company": "Capgemini",
+        "company": "Jobot",
         "count": 1,
         "roles": []
       },
       {
-        "company": "Danaher Corporation",
-        "count": 1,
-        "roles": []
-      },
-      {
-        "company": "Insight Global",
+        "company": "Robert Half",
         "count": 1,
         "roles": []
       }
@@ -237,33 +237,33 @@
   },
   "salary_ranges": {
     "mle": {
-      "low": 181327,
-      "mid": 192567,
-      "high": 229703,
+      "low": 86913,
+      "mid": 99548,
+      "high": 164234,
       "region": "US"
     },
     "ds": {
-      "low": 110966,
-      "mid": 124458,
-      "high": 141652,
+      "low": 104736,
+      "mid": 123524,
+      "high": 141461,
       "region": "US"
     },
     "ai_eng": {
-      "low": 113648,
-      "mid": 139399,
-      "high": 161983,
+      "low": 97371,
+      "mid": 139952,
+      "high": 164234,
       "region": "US"
     },
     "mlops": {
-      "low": 90150,
-      "mid": 121660,
-      "high": 146083,
+      "low": 106830,
+      "mid": 126197,
+      "high": 152744,
       "region": "US"
     },
     "llm_eng": {
-      "low": 122161,
-      "mid": 150506,
-      "high": 210000,
+      "low": 110350,
+      "mid": 150000,
+      "high": 226076,
       "region": "US"
     }
   },
@@ -306,6 +306,19 @@
       "mlops_us": 1138,
       "llm_eng_ca": 158,
       "llm_eng_us": 3208
+    },
+    {
+      "week": "2026-06-14",
+      "mle_ca": 449,
+      "mle_us": 11638,
+      "ds_ca": 2495,
+      "ds_us": 21692,
+      "ai_eng_ca": 1948,
+      "ai_eng_us": 49046,
+      "mlops_ca": 108,
+      "mlops_us": 1263,
+      "llm_eng_ca": 163,
+      "llm_eng_us": 3774
     }
   ]
 }
