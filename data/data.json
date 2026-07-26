@@ -1,36 +1,36 @@
 {
-  "last_updated": "2026-07-19",
-  "week_label": "Week of July 19, 2026",
+  "last_updated": "2026-07-26",
+  "week_label": "Week of July 26, 2026",
   "job_counts": {
     "mle": {
-      "ca": 698,
-      "us": 12850,
-      "ca_wow": 47.6,
-      "us_wow": 5.8
+      "ca": 621,
+      "us": 12633,
+      "ca_wow": -11.0,
+      "us_wow": -1.7
     },
     "ds": {
-      "ca": 3685,
-      "us": 22144,
-      "ca_wow": 34.9,
-      "us_wow": 1.0
+      "ca": 3377,
+      "us": 22408,
+      "ca_wow": -8.4,
+      "us_wow": 1.2
     },
     "ai_eng": {
-      "ca": 2923,
-      "us": 50850,
-      "ca_wow": 31.4,
-      "us_wow": 0.4
+      "ca": 2808,
+      "us": 53049,
+      "ca_wow": -3.9,
+      "us_wow": 4.3
     },
     "mlops": {
-      "ca": 101,
-      "us": 1273,
-      "ca_wow": 40.3,
-      "us_wow": 1.6
+      "ca": 90,
+      "us": 1162,
+      "ca_wow": -10.9,
+      "us_wow": -8.7
     },
     "llm_eng": {
-      "ca": 215,
-      "us": 3775,
-      "ca_wow": 24.3,
-      "us_wow": 9.8
+      "ca": 192,
+      "us": 3788,
+      "ca_wow": -10.7,
+      "us_wow": 0.3
     }
   },
   "top_skills": [
@@ -42,84 +42,84 @@
     },
     {
       "skill": "llm",
-      "frequency": 110,
-      "wow_change": 0.0,
-      "new": false
-    },
-    {
-      "skill": "deployment",
-      "frequency": 34,
+      "frequency": 114,
       "wow_change": 0.0,
       "new": false
     },
     {
       "skill": "python",
-      "frequency": 33,
-      "wow_change": 0.0,
-      "new": false
-    },
-    {
-      "skill": "aws",
-      "frequency": 26,
+      "frequency": 43,
       "wow_change": 0.0,
       "new": false
     },
     {
       "skill": "rag",
-      "frequency": 17,
+      "frequency": 24,
       "wow_change": 0.0,
       "new": false
     },
     {
-      "skill": "azure",
-      "frequency": 15,
-      "wow_change": 0.0,
-      "new": false
-    },
-    {
-      "skill": "sagemaker",
-      "frequency": 15,
+      "skill": "deployment",
+      "frequency": 23,
       "wow_change": 0.0,
       "new": false
     },
     {
       "skill": "vertex",
-      "frequency": 13,
+      "frequency": 15,
+      "wow_change": 0.0,
+      "new": false
+    },
+    {
+      "skill": "mongodb",
+      "frequency": 14,
       "wow_change": 0.0,
       "new": false
     },
     {
       "skill": "inference",
-      "frequency": 12,
+      "frequency": 14,
       "wow_change": 0.0,
       "new": false
     },
     {
       "skill": "sql",
+      "frequency": 13,
+      "wow_change": 0.0,
+      "new": false
+    },
+    {
+      "skill": "postgresql",
+      "frequency": 13,
+      "wow_change": 0.0,
+      "new": false
+    },
+    {
+      "skill": "aws",
+      "frequency": 12,
+      "wow_change": 0.0,
+      "new": false
+    },
+    {
+      "skill": "azure",
+      "frequency": 11,
+      "wow_change": 0.0,
+      "new": false
+    },
+    {
+      "skill": "databricks",
+      "frequency": 10,
+      "wow_change": 0.0,
+      "new": false
+    },
+    {
+      "skill": "langchain",
       "frequency": 10,
       "wow_change": 0.0,
       "new": false
     },
     {
       "skill": "ci/cd",
-      "frequency": 10,
-      "wow_change": 0.0,
-      "new": false
-    },
-    {
-      "skill": "prompt engineering",
-      "frequency": 8,
-      "wow_change": 0.0,
-      "new": false
-    },
-    {
-      "skill": "langchain",
-      "frequency": 8,
-      "wow_change": 0.0,
-      "new": false
-    },
-    {
-      "skill": "databricks",
       "frequency": 8,
       "wow_change": 0.0,
       "new": false
@@ -129,16 +129,6 @@
     "toronto": [
       {
         "company": "Stripe",
-        "count": 4,
-        "roles": []
-      },
-      {
-        "company": "illumin",
-        "count": 3,
-        "roles": []
-      },
-      {
-        "company": "Astra North Infoteck Inc.",
         "count": 3,
         "roles": []
       },
@@ -151,11 +141,21 @@
         "company": "Bree",
         "count": 2,
         "roles": []
+      },
+      {
+        "company": "United States Digital Space LLC",
+        "count": 2,
+        "roles": []
+      },
+      {
+        "company": "illumin",
+        "count": 2,
+        "roles": []
       }
     ],
     "vancouver": [
       {
-        "company": "Clio",
+        "company": "Targeted Talent",
         "count": 4,
         "roles": []
       },
@@ -175,7 +175,7 @@
         "roles": []
       },
       {
-        "company": "Themis Solutions Inc.",
+        "company": "Clio",
         "count": 2,
         "roles": []
       }
@@ -184,11 +184,6 @@
       {
         "company": "Sciforium",
         "count": 2,
-        "roles": []
-      },
-      {
-        "company": "Purple Drive Technologies LLC",
-        "count": 1,
         "roles": []
       },
       {
@@ -202,7 +197,12 @@
         "roles": []
       },
       {
-        "company": "Quality IT Source, LLC",
+        "company": "Nace AI",
+        "count": 1,
+        "roles": []
+      },
+      {
+        "company": "ClimateAi",
         "count": 1,
         "roles": []
       }
@@ -214,12 +214,12 @@
         "roles": []
       },
       {
-        "company": "Career Renew",
+        "company": "twenty80.io",
         "count": 1,
         "roles": []
       },
       {
-        "company": "Kforce Technology Staffing",
+        "company": "ISite Technologies Inc",
         "count": 1,
         "roles": []
       },
@@ -238,32 +238,32 @@
   "salary_ranges": {
     "mle": {
       "low": 121082,
-      "mid": 125603,
-      "high": 130965,
+      "mid": 128567,
+      "high": 131992,
       "region": "US"
     },
     "ds": {
-      "low": 120000,
-      "mid": 146773,
-      "high": 172155,
+      "low": 114263,
+      "mid": 144468,
+      "high": 164090,
       "region": "US"
     },
     "ai_eng": {
-      "low": 104716,
-      "mid": 127571,
+      "low": 111054,
+      "mid": 126844,
       "high": 146881,
       "region": "US"
     },
     "mlops": {
-      "low": 101120,
-      "mid": 116393,
-      "high": 136624,
+      "low": 96014,
+      "mid": 111218,
+      "high": 125987,
       "region": "US"
     },
     "llm_eng": {
-      "low": 107244,
+      "low": 103083,
       "mid": 150000,
-      "high": 210000,
+      "high": 220000,
       "region": "US"
     }
   },
@@ -384,6 +384,19 @@
       "mlops_us": 1273,
       "llm_eng_ca": 215,
       "llm_eng_us": 3775
+    },
+    {
+      "week": "2026-07-26",
+      "mle_ca": 621,
+      "mle_us": 12633,
+      "ds_ca": 3377,
+      "ds_us": 22408,
+      "ai_eng_ca": 2808,
+      "ai_eng_us": 53049,
+      "mlops_ca": 90,
+      "mlops_us": 1162,
+      "llm_eng_ca": 192,
+      "llm_eng_us": 3788
     }
   ]
 }
