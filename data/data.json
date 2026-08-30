@@ -1,108 +1,108 @@
 {
-  "last_updated": "2026-08-23",
-  "week_label": "Week of August 23, 2026",
+  "last_updated": "2026-08-30",
+  "week_label": "Week of August 30, 2026",
   "job_counts": {
     "mle": {
-      "ca": 478,
-      "us": 12989,
-      "ca_wow": -7.4,
-      "us_wow": -11.9
+      "ca": 585,
+      "us": 13290,
+      "ca_wow": 22.4,
+      "us_wow": 2.3
     },
     "ds": {
-      "ca": 2445,
-      "us": 23886,
-      "ca_wow": -3.9,
-      "us_wow": -6.2
+      "ca": 3009,
+      "us": 24946,
+      "ca_wow": 23.1,
+      "us_wow": 4.4
     },
     "ai_eng": {
-      "ca": 2208,
-      "us": 54487,
-      "ca_wow": -3.2,
-      "us_wow": -11.2
+      "ca": 2829,
+      "us": 56451,
+      "ca_wow": 28.1,
+      "us_wow": 3.6
     },
     "mlops": {
-      "ca": 62,
-      "us": 1132,
-      "ca_wow": -4.6,
-      "us_wow": -19.0
+      "ca": 75,
+      "us": 1309,
+      "ca_wow": 21.0,
+      "us_wow": 15.6
     },
     "llm_eng": {
-      "ca": 164,
-      "us": 4064,
-      "ca_wow": -0.6,
-      "us_wow": 1.4
+      "ca": 213,
+      "us": 3550,
+      "ca_wow": 29.9,
+      "us_wow": -12.6
     }
   },
   "top_skills": [
     {
       "skill": "llm",
-      "frequency": 218,
+      "frequency": 225,
       "wow_change": 0.0,
       "new": false
     },
     {
       "skill": "mlops",
-      "frequency": 129,
-      "wow_change": 0.0,
-      "new": false
-    },
-    {
-      "skill": "python",
-      "frequency": 30,
+      "frequency": 124,
       "wow_change": 0.0,
       "new": false
     },
     {
       "skill": "deployment",
+      "frequency": 25,
+      "wow_change": 0.0,
+      "new": false
+    },
+    {
+      "skill": "python",
       "frequency": 23,
       "wow_change": 0.0,
       "new": false
     },
     {
-      "skill": "postgresql",
-      "frequency": 15,
+      "skill": "inference",
+      "frequency": 17,
       "wow_change": 0.0,
       "new": false
     },
     {
       "skill": "aws",
+      "frequency": 16,
+      "wow_change": 0.0,
+      "new": false
+    },
+    {
+      "skill": "postgresql",
       "frequency": 14,
       "wow_change": 0.0,
       "new": false
     },
     {
-      "skill": "inference",
-      "frequency": 14,
+      "skill": "snowflake",
+      "frequency": 12,
       "wow_change": 0.0,
       "new": false
     },
     {
       "skill": "mongodb",
-      "frequency": 13,
-      "wow_change": 0.0,
-      "new": false
-    },
-    {
-      "skill": "sql",
-      "frequency": 9,
-      "wow_change": 0.0,
-      "new": false
-    },
-    {
-      "skill": "azure",
-      "frequency": 9,
-      "wow_change": 0.0,
-      "new": false
-    },
-    {
-      "skill": "pytorch",
-      "frequency": 8,
+      "frequency": 12,
       "wow_change": 0.0,
       "new": false
     },
     {
       "skill": "ci/cd",
-      "frequency": 8,
+      "frequency": 9,
+      "wow_change": 0.0,
+      "new": false
+    },
+    {
+      "skill": "rag",
+      "frequency": 9,
+      "wow_change": 0.0,
+      "new": false
+    },
+    {
+      "skill": "sql",
+      "frequency": 7,
       "wow_change": 0.0,
       "new": false
     },
@@ -113,14 +113,14 @@
       "new": false
     },
     {
-      "skill": "snowflake",
+      "skill": "vertex",
       "frequency": 7,
       "wow_change": 0.0,
       "new": false
     },
     {
-      "skill": "vertex",
-      "frequency": 7,
+      "skill": "java",
+      "frequency": 6,
       "wow_change": 0.0,
       "new": false
     }
@@ -128,27 +128,27 @@
   "top_companies": {
     "toronto": [
       {
+        "company": "Insight Global",
+        "count": 5,
+        "roles": []
+      },
+      {
         "company": "Mercor",
         "count": 5,
         "roles": []
       },
       {
-        "company": "Quincus",
+        "company": "Kelly Services",
+        "count": 3,
+        "roles": []
+      },
+      {
+        "company": "Northbridge Financial Corporation",
         "count": 2,
         "roles": []
       },
       {
-        "company": "TheAppLabb",
-        "count": 2,
-        "roles": []
-      },
-      {
-        "company": "Insight Global",
-        "count": 2,
-        "roles": []
-      },
-      {
-        "company": "TD Bank",
+        "company": "Fulfillment IQ",
         "count": 2,
         "roles": []
       }
@@ -157,6 +157,11 @@
       {
         "company": "Targeted Talent",
         "count": 4,
+        "roles": []
+      },
+      {
+        "company": "YO AI Labs",
+        "count": 3,
         "roles": []
       },
       {
@@ -173,31 +178,31 @@
         "company": "Sanctuary AI",
         "count": 2,
         "roles": []
-      },
-      {
-        "company": "Starboard Recruitment",
-        "count": 2,
-        "roles": []
       }
     ],
     "san_francisco": [
+      {
+        "company": "Samsara",
+        "count": 2,
+        "roles": []
+      },
+      {
+        "company": "Whatnot",
+        "count": 2,
+        "roles": []
+      },
+      {
+        "company": "Discover Financial Services",
+        "count": 2,
+        "roles": []
+      },
       {
         "company": "J.P. Morgan",
         "count": 1,
         "roles": []
       },
       {
-        "company": "KPMG",
-        "count": 1,
-        "roles": []
-      },
-      {
-        "company": "Cardinal Integrated Technologies Inc",
-        "count": 1,
-        "roles": []
-      },
-      {
-        "company": "Bright Vision Technologies",
+        "company": "Robert Half",
         "count": 1,
         "roles": []
       }
@@ -205,26 +210,26 @@
     "new_york": [
       {
         "company": "Capital One",
-        "count": 20,
+        "count": 5,
         "roles": []
       },
       {
         "company": "J.P. Morgan",
+        "count": 3,
+        "roles": []
+      },
+      {
+        "company": "S&P Global",
+        "count": 2,
+        "roles": []
+      },
+      {
+        "company": "Samsara",
         "count": 1,
         "roles": []
       },
       {
-        "company": "Grubhub",
-        "count": 1,
-        "roles": []
-      },
-      {
-        "company": "Dahl Consulting",
-        "count": 1,
-        "roles": []
-      },
-      {
-        "company": "Avenue Code, LLC",
+        "company": "BGC Partners",
         "count": 1,
         "roles": []
       }
@@ -232,50 +237,37 @@
   },
   "salary_ranges": {
     "mle": {
-      "low": 123905,
-      "mid": 179296,
-      "high": 219085,
+      "low": 121483,
+      "mid": 138972,
+      "high": 176083,
       "region": "US"
     },
     "ds": {
-      "low": 119056,
-      "mid": 144090,
-      "high": 172655,
+      "low": 132000,
+      "mid": 165000,
+      "high": 185000,
       "region": "US"
     },
     "ai_eng": {
-      "low": 107020,
-      "mid": 159694,
-      "high": 180079,
+      "low": 109578,
+      "mid": 139837,
+      "high": 164621,
       "region": "US"
     },
     "mlops": {
-      "low": 91812,
-      "mid": 107123,
-      "high": 131683,
+      "low": 97516,
+      "mid": 115858,
+      "high": 148424,
       "region": "US"
     },
     "llm_eng": {
       "low": 85270,
-      "mid": 90961,
-      "high": 106807,
+      "mid": 91066,
+      "high": 106998,
       "region": "US"
     }
   },
   "history": [
-    {
-      "week": "2026-06-07",
-      "mle_ca": 485,
-      "mle_us": 10937,
-      "ds_ca": 2623,
-      "ds_us": 21096,
-      "ai_eng_ca": 2023,
-      "ai_eng_us": 46456,
-      "mlops_ca": 121,
-      "mlops_us": 1138,
-      "llm_eng_ca": 158,
-      "llm_eng_us": 3208
-    },
     {
       "week": "2026-06-14",
       "mle_ca": 449,
@@ -418,6 +410,19 @@
       "mlops_us": 1132,
       "llm_eng_ca": 164,
       "llm_eng_us": 4064
+    },
+    {
+      "week": "2026-08-30",
+      "mle_ca": 585,
+      "mle_us": 13290,
+      "ds_ca": 3009,
+      "ds_us": 24946,
+      "ai_eng_ca": 2829,
+      "ai_eng_us": 56451,
+      "mlops_ca": 75,
+      "mlops_us": 1309,
+      "llm_eng_ca": 213,
+      "llm_eng_us": 3550
     }
   ]
 }
