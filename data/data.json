@@ -1,126 +1,126 @@
 {
-  "last_updated": "2026-08-30",
-  "week_label": "Week of August 30, 2026",
+  "last_updated": "2026-09-06",
+  "week_label": "Week of September 6, 2026",
   "job_counts": {
     "mle": {
-      "ca": 585,
-      "us": 13290,
-      "ca_wow": 22.4,
-      "us_wow": 2.3
+      "ca": 584,
+      "us": 13911,
+      "ca_wow": -0.2,
+      "us_wow": 4.7
     },
     "ds": {
-      "ca": 3009,
-      "us": 24946,
-      "ca_wow": 23.1,
-      "us_wow": 4.4
+      "ca": 3162,
+      "us": 26306,
+      "ca_wow": 5.1,
+      "us_wow": 5.5
     },
     "ai_eng": {
-      "ca": 2829,
-      "us": 56451,
-      "ca_wow": 28.1,
-      "us_wow": 3.6
+      "ca": 2786,
+      "us": 61920,
+      "ca_wow": -1.5,
+      "us_wow": 9.7
     },
     "mlops": {
-      "ca": 75,
-      "us": 1309,
-      "ca_wow": 21.0,
-      "us_wow": 15.6
+      "ca": 83,
+      "us": 1394,
+      "ca_wow": 10.7,
+      "us_wow": 6.5
     },
     "llm_eng": {
-      "ca": 213,
-      "us": 3550,
-      "ca_wow": 29.9,
-      "us_wow": -12.6
+      "ca": 218,
+      "us": 4011,
+      "ca_wow": 2.3,
+      "us_wow": 13.0
     }
   },
   "top_skills": [
     {
       "skill": "llm",
-      "frequency": 225,
+      "frequency": 197,
       "wow_change": 0.0,
       "new": false
     },
     {
       "skill": "mlops",
-      "frequency": 124,
+      "frequency": 130,
       "wow_change": 0.0,
       "new": false
     },
     {
-      "skill": "deployment",
-      "frequency": 25,
+      "skill": "aws",
+      "frequency": 63,
+      "wow_change": 0.0,
+      "new": false
+    },
+    {
+      "skill": "pytorch",
+      "frequency": 49,
+      "wow_change": 0.0,
+      "new": false
+    },
+    {
+      "skill": "gcp",
+      "frequency": 48,
       "wow_change": 0.0,
       "new": false
     },
     {
       "skill": "python",
+      "frequency": 47,
+      "wow_change": 0.0,
+      "new": false
+    },
+    {
+      "skill": "ray",
+      "frequency": 45,
+      "wow_change": 0.0,
+      "new": false
+    },
+    {
+      "skill": "rag",
+      "frequency": 27,
+      "wow_change": 0.0,
+      "new": false
+    },
+    {
+      "skill": "deployment",
+      "frequency": 26,
+      "wow_change": 0.0,
+      "new": false
+    },
+    {
+      "skill": "prompt engineering",
+      "frequency": 25,
+      "wow_change": 0.0,
+      "new": false
+    },
+    {
+      "skill": "huggingface",
+      "frequency": 24,
+      "wow_change": 0.0,
+      "new": false
+    },
+    {
+      "skill": "langchain",
+      "frequency": 24,
+      "wow_change": 0.0,
+      "new": false
+    },
+    {
+      "skill": "vector database",
       "frequency": 23,
       "wow_change": 0.0,
       "new": false
     },
     {
       "skill": "inference",
-      "frequency": 17,
-      "wow_change": 0.0,
-      "new": false
-    },
-    {
-      "skill": "aws",
-      "frequency": 16,
+      "frequency": 15,
       "wow_change": 0.0,
       "new": false
     },
     {
       "skill": "postgresql",
-      "frequency": 14,
-      "wow_change": 0.0,
-      "new": false
-    },
-    {
-      "skill": "snowflake",
       "frequency": 12,
-      "wow_change": 0.0,
-      "new": false
-    },
-    {
-      "skill": "mongodb",
-      "frequency": 12,
-      "wow_change": 0.0,
-      "new": false
-    },
-    {
-      "skill": "ci/cd",
-      "frequency": 9,
-      "wow_change": 0.0,
-      "new": false
-    },
-    {
-      "skill": "rag",
-      "frequency": 9,
-      "wow_change": 0.0,
-      "new": false
-    },
-    {
-      "skill": "sql",
-      "frequency": 7,
-      "wow_change": 0.0,
-      "new": false
-    },
-    {
-      "skill": "databricks",
-      "frequency": 7,
-      "wow_change": 0.0,
-      "new": false
-    },
-    {
-      "skill": "vertex",
-      "frequency": 7,
-      "wow_change": 0.0,
-      "new": false
-    },
-    {
-      "skill": "java",
-      "frequency": 6,
       "wow_change": 0.0,
       "new": false
     }
@@ -133,8 +133,8 @@
         "roles": []
       },
       {
-        "company": "Mercor",
-        "count": 5,
+        "company": "Astra North Infoteck Inc.",
+        "count": 4,
         "roles": []
       },
       {
@@ -143,12 +143,12 @@
         "roles": []
       },
       {
-        "company": "Northbridge Financial Corporation",
-        "count": 2,
+        "company": "Mercor",
+        "count": 3,
         "roles": []
       },
       {
-        "company": "Fulfillment IQ",
+        "company": "Invision AI",
         "count": 2,
         "roles": []
       }
@@ -165,11 +165,6 @@
         "roles": []
       },
       {
-        "company": "Workday",
-        "count": 3,
-        "roles": []
-      },
-      {
         "company": "HDR, Inc.",
         "count": 2,
         "roles": []
@@ -178,58 +173,63 @@
         "company": "Sanctuary AI",
         "count": 2,
         "roles": []
+      },
+      {
+        "company": "Starboard Recruitment",
+        "count": 2,
+        "roles": []
       }
     ],
     "san_francisco": [
-      {
-        "company": "Samsara",
-        "count": 2,
-        "roles": []
-      },
-      {
-        "company": "Whatnot",
-        "count": 2,
-        "roles": []
-      },
       {
         "company": "Discover Financial Services",
         "count": 2,
         "roles": []
       },
       {
-        "company": "J.P. Morgan",
+        "company": "Accellor",
         "count": 1,
         "roles": []
       },
       {
-        "company": "Robert Half",
+        "company": "Workos",
+        "count": 1,
+        "roles": []
+      },
+      {
+        "company": "Amplitude",
+        "count": 1,
+        "roles": []
+      },
+      {
+        "company": "E-Solutions, Inc.",
         "count": 1,
         "roles": []
       }
     ],
     "new_york": [
       {
-        "company": "Capital One",
-        "count": 5,
-        "roles": []
-      },
-      {
-        "company": "J.P. Morgan",
-        "count": 3,
-        "roles": []
-      },
-      {
-        "company": "S&P Global",
+        "company": "HeadStart",
         "count": 2,
         "roles": []
       },
       {
-        "company": "Samsara",
+        "company": "DataCamp",
         "count": 1,
         "roles": []
       },
       {
-        "company": "BGC Partners",
+        "company": "Monstro PC",
+        "count": 1,
+        "roles": []
+      },
+      {
+        "company": "LHi Group Ltd",
+        "count": 1,
+        "roles": []
+      },
+      {
+        "company": "Certified Network Specialists Inc",
         "count": 1,
         "roles": []
       }
@@ -237,50 +237,37 @@
   },
   "salary_ranges": {
     "mle": {
-      "low": 121483,
-      "mid": 138972,
-      "high": 176083,
+      "low": 74688,
+      "mid": 76922,
+      "high": 79191,
       "region": "US"
     },
     "ds": {
-      "low": 132000,
-      "mid": 165000,
-      "high": 185000,
+      "low": 49234,
+      "mid": 51285,
+      "high": 58051,
       "region": "US"
     },
     "ai_eng": {
-      "low": 109578,
-      "mid": 139837,
-      "high": 164621,
+      "low": 135805,
+      "mid": 163309,
+      "high": 189520,
       "region": "US"
     },
     "mlops": {
-      "low": 97516,
-      "mid": 115858,
-      "high": 148424,
+      "low": 100019,
+      "mid": 124539,
+      "high": 150966,
       "region": "US"
     },
     "llm_eng": {
-      "low": 85270,
-      "mid": 91066,
-      "high": 106998,
+      "low": 90816,
+      "mid": 141072,
+      "high": 156979,
       "region": "US"
     }
   },
   "history": [
-    {
-      "week": "2026-06-14",
-      "mle_ca": 449,
-      "mle_us": 11638,
-      "ds_ca": 2495,
-      "ds_us": 21692,
-      "ai_eng_ca": 1948,
-      "ai_eng_us": 49046,
-      "mlops_ca": 108,
-      "mlops_us": 1263,
-      "llm_eng_ca": 163,
-      "llm_eng_us": 3774
-    },
     {
       "week": "2026-06-21",
       "mle_ca": 427,
@@ -423,6 +410,19 @@
       "mlops_us": 1309,
       "llm_eng_ca": 213,
       "llm_eng_us": 3550
+    },
+    {
+      "week": "2026-09-06",
+      "mle_ca": 584,
+      "mle_us": 13911,
+      "ds_ca": 3162,
+      "ds_us": 26306,
+      "ai_eng_ca": 2786,
+      "ai_eng_us": 61920,
+      "mlops_ca": 83,
+      "mlops_us": 1394,
+      "llm_eng_ca": 218,
+      "llm_eng_us": 4011
     }
   ]
 }
