@@ -1,48 +1,48 @@
 {
-  "last_updated": "2026-10-18",
-  "week_label": "Week of October 18, 2026",
+  "last_updated": "2026-10-25",
+  "week_label": "Week of October 25, 2026",
   "job_counts": {
     "mle": {
-      "ca": 672,
-      "us": 15231,
-      "ca_wow": 8.6,
-      "us_wow": -1.4
+      "ca": 792,
+      "us": 14853,
+      "ca_wow": 17.9,
+      "us_wow": -2.5
     },
     "ds": {
-      "ca": 3701,
-      "us": 27036,
-      "ca_wow": 3.3,
-      "us_wow": -3.2
+      "ca": 3905,
+      "us": 26131,
+      "ca_wow": 5.5,
+      "us_wow": -3.3
     },
     "ai_eng": {
-      "ca": 3579,
-      "us": 71656,
-      "ca_wow": 8.4,
-      "us_wow": 3.8
+      "ca": 4025,
+      "us": 70203,
+      "ca_wow": 12.5,
+      "us_wow": -2.0
     },
     "mlops": {
-      "ca": 122,
-      "us": 1628,
-      "ca_wow": 13.0,
-      "us_wow": -0.4
+      "ca": 142,
+      "us": 1526,
+      "ca_wow": 16.4,
+      "us_wow": -6.3
     },
     "llm_eng": {
-      "ca": 246,
-      "us": 4168,
-      "ca_wow": 5.6,
-      "us_wow": -2.0
+      "ca": 303,
+      "us": 3976,
+      "ca_wow": 23.2,
+      "us_wow": -4.6
     }
   },
   "top_skills": [
     {
       "skill": "llm",
-      "frequency": 186,
+      "frequency": 200,
       "wow_change": 0.0,
       "new": false
     },
     {
       "skill": "mlops",
-      "frequency": 145,
+      "frequency": 158,
       "wow_change": 0.0,
       "new": false
     },
@@ -54,24 +54,18 @@
     },
     {
       "skill": "rag",
-      "frequency": 71,
-      "wow_change": 0.0,
-      "new": false
-    },
-    {
-      "skill": "prompt engineering",
       "frequency": 57,
       "wow_change": 0.0,
       "new": false
     },
     {
-      "skill": "langchain",
-      "frequency": 49,
+      "skill": "prompt engineering",
+      "frequency": 47,
       "wow_change": 0.0,
       "new": false
     },
     {
-      "skill": "huggingface",
+      "skill": "langchain",
       "frequency": 45,
       "wow_change": 0.0,
       "new": false
@@ -83,14 +77,26 @@
       "new": false
     },
     {
+      "skill": "huggingface",
+      "frequency": 43,
+      "wow_change": 0.0,
+      "new": false
+    },
+    {
       "skill": "deployment",
-      "frequency": 40,
+      "frequency": 34,
+      "wow_change": 0.0,
+      "new": false
+    },
+    {
+      "skill": "azure",
+      "frequency": 20,
       "wow_change": 0.0,
       "new": false
     },
     {
       "skill": "inference",
-      "frequency": 16,
+      "frequency": 17,
       "wow_change": 0.0,
       "new": false
     },
@@ -101,26 +107,20 @@
       "new": false
     },
     {
-      "skill": "azure",
-      "frequency": 15,
-      "wow_change": 0.0,
-      "new": false
-    },
-    {
       "skill": "ci/cd",
-      "frequency": 14,
-      "wow_change": 0.0,
-      "new": false
-    },
-    {
-      "skill": "vertex",
       "frequency": 13,
       "wow_change": 0.0,
       "new": false
     },
     {
       "skill": "databricks",
-      "frequency": 8,
+      "frequency": 9,
+      "wow_change": 0.0,
+      "new": false
+    },
+    {
+      "skill": "sagemaker",
+      "frequency": 7,
       "wow_change": 0.0,
       "new": false
     }
@@ -129,12 +129,17 @@
     "toronto": [
       {
         "company": "Mercor",
+        "count": 9,
+        "roles": []
+      },
+      {
+        "company": "Urban Ridge Supplies",
         "count": 5,
         "roles": []
       },
       {
-        "company": "Liberty Mutual Canada",
-        "count": 4,
+        "company": "Stripe",
+        "count": 3,
         "roles": []
       },
       {
@@ -143,12 +148,7 @@
         "roles": []
       },
       {
-        "company": "Insight Global",
-        "count": 2,
-        "roles": []
-      },
-      {
-        "company": "Stripe",
+        "company": "Skillhub Solutions Inc.",
         "count": 2,
         "roles": []
       }
@@ -165,6 +165,11 @@
         "roles": []
       },
       {
+        "company": "Starboard Recruitment",
+        "count": 2,
+        "roles": []
+      },
+      {
         "company": "Aimlroles",
         "count": 2,
         "roles": []
@@ -173,44 +178,39 @@
         "company": "YO AI Labs",
         "count": 2,
         "roles": []
-      },
-      {
-        "company": "Remarcable",
-        "count": 2,
-        "roles": []
       }
     ],
     "san_francisco": [
-      {
-        "company": "Kforce Technology Staffing",
-        "count": 1,
-        "roles": []
-      },
-      {
-        "company": "Oracle",
-        "count": 1,
-        "roles": []
-      },
       {
         "company": "West Coast Consulting LLC",
         "count": 1,
         "roles": []
       },
       {
-        "company": "W3Global",
+        "company": "PaloAlto Networks",
         "count": 1,
         "roles": []
       },
       {
-        "company": "Sage",
+        "company": "Xoriant Corporation",
+        "count": 1,
+        "roles": []
+      },
+      {
+        "company": "Apex Systems",
+        "count": 1,
+        "roles": []
+      },
+      {
+        "company": "AQUA Information Systems, Inc.",
         "count": 1,
         "roles": []
       }
     ],
     "new_york": [
       {
-        "company": "J.P. Morgan",
-        "count": 2,
+        "company": "Capital One",
+        "count": 7,
         "roles": []
       },
       {
@@ -219,17 +219,17 @@
         "roles": []
       },
       {
-        "company": "S&P Global",
+        "company": "James Search Group",
         "count": 1,
         "roles": []
       },
       {
-        "company": "KPG99 INC",
+        "company": "SeatGeek",
         "count": 1,
         "roles": []
       },
       {
-        "company": "Open Systems Technologies",
+        "company": "Faction Imaging Inc",
         "count": 1,
         "roles": []
       }
@@ -237,50 +237,37 @@
   },
   "salary_ranges": {
     "mle": {
-      "low": 111456,
-      "mid": 133397,
-      "high": 154681,
+      "low": 118330,
+      "mid": 151442,
+      "high": 198580,
       "region": "US"
     },
     "ds": {
-      "low": 109452,
-      "mid": 128988,
-      "high": 149860,
+      "low": 127873,
+      "mid": 144905,
+      "high": 154257,
       "region": "US"
     },
     "ai_eng": {
-      "low": 116638,
-      "mid": 136189,
-      "high": 157991,
+      "low": 115642,
+      "mid": 157367,
+      "high": 184850,
       "region": "US"
     },
     "mlops": {
-      "low": 90298,
-      "mid": 113201,
-      "high": 133135,
+      "low": 83940,
+      "mid": 122492,
+      "high": 146459,
       "region": "US"
     },
     "llm_eng": {
-      "low": 150145,
-      "mid": 160361,
-      "high": 187552,
+      "low": 149409,
+      "mid": 157980,
+      "high": 187164,
       "region": "US"
     }
   },
   "history": [
-    {
-      "week": "2026-08-02",
-      "mle_ca": 507,
-      "mle_us": 12852,
-      "ds_ca": 2601,
-      "ds_us": 23519,
-      "ai_eng_ca": 2287,
-      "ai_eng_us": 56190,
-      "mlops_ca": 69,
-      "mlops_us": 1172,
-      "llm_eng_ca": 159,
-      "llm_eng_us": 3876
-    },
     {
       "week": "2026-08-09",
       "mle_ca": 545,
@@ -423,6 +410,19 @@
       "mlops_us": 1628,
       "llm_eng_ca": 246,
       "llm_eng_us": 4168
+    },
+    {
+      "week": "2026-10-25",
+      "mle_ca": 792,
+      "mle_us": 14853,
+      "ds_ca": 3905,
+      "ds_us": 26131,
+      "ai_eng_ca": 4025,
+      "ai_eng_us": 70203,
+      "mlops_ca": 142,
+      "mlops_us": 1526,
+      "llm_eng_ca": 303,
+      "llm_eng_us": 3976
     }
   ]
 }
